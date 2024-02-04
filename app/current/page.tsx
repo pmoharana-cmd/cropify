@@ -70,6 +70,16 @@ export default async function Current() {
             </button>
           </div>
         </div>
+        <div className="background">
+          <Image
+            src="/images/green.png"
+            layout="fill"
+            objectFit="cover"
+            quality={100}
+            alt="Background"
+            priority
+          />
+        </div>
       </div>
       <Footer />
     </>
