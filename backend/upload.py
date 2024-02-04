@@ -1,9 +1,10 @@
-from pymongo import MongoClient, database
+from pymongo import MongoClient
 import os
 from dotenv import load_dotenv
 import base64
+from datetime import datetime
 
-load_dotenv()
+load_dotenv("../.env")
 
 USERNAME = os.getenv("MONGO_USERNAME")
 PASSWORD = os.getenv("MONGO_PASSWORD")
@@ -16,6 +17,7 @@ def uploadData(humidity: float, temp: float, water_level: float, height: float, 
         raise ValueError("Path does not exist")
 
     row = {
+        "time": datetime.now(),
         "humidity": humidity,
         "temperature": temp,
         "water_level": water_level,
@@ -37,4 +39,5 @@ def convertImageToArray(img: str):
         coded_string = base64.b64encode(image.read())
         return coded_string
     
-print(uploadData(0, 0, 0, 0, "picture.jpg"))
+for i in range(20):
+    uploadData(0, 0, 0, 0, "picture.jpg")
