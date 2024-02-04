@@ -1,12 +1,12 @@
 
 import serial
 
-ser = serial.Serial('/dev/tty.usbmodem1101', 9600, timeout=1).reset_input_buffer()
+ser = serial.Serial('/dev/tty.usbmodem1101', 9600, timeout=1)
+ser.reset_input_buffer()
 data = {}
 
-    
 def getSensorData():
-    print("Reading sensor data...")
+    print("Reading sensor data...", ser.name)
     csv = ser.readline().decode('utf-8').rstrip()
     # print(csv)
     if csv != "":
@@ -20,12 +20,11 @@ def getSensorData():
     print("Sensor data read.")
     return data
 
-# while True:
-#     try:
-#         upload()
-#     except OSError as e:
-#         print("OSError:", e)
-#     except KeyboardInterrupt as e:
-#         print("KeyboardInterrupt:", e)
-#     except Exception as e:
-#         print("Exception:", e)
+
+try:
+    while True:
+        getSensorData()
+except OSError as e:
+    print("OSError:", e)
+except KeyboardInterrupt as e:
+    print("KeyboardInterrupt:", e)

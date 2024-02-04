@@ -60,8 +60,6 @@ def capture_image(device="USB Camera", output_file="picture.jpg"):
 #default is webcam
 capture_image()
 #capture_image(camType["phone"])
-print(uploadData(0, 0, 0, getHeight("picture.jpg")[0], "picture.jpg"))
-
 delaySecs = 2
 
 try:
@@ -73,5 +71,3 @@ except KeyboardInterrupt as e:
     print("KeyboardInterrupt:", e)
 except OSError as e:
     print("OSError:", e)
-except Exception as e:
-    print("Exception:", e)
