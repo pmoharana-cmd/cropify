@@ -25,7 +25,7 @@ export default async function Current() {
       height: Number,
       image: String,
     });
-    const collection = mongoose.model("crop_data", cropSchema);
+    const collection = mongoose.model("crop_data", schema);
 
     setSchema(schema);
     setCrops(collection);
