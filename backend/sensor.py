@@ -21,10 +21,10 @@ def getSensorData():
     return data
 
 
-try:
-    while True:
-        getSensorData()
-except OSError as e:
-    print("OSError:", e)
-except KeyboardInterrupt as e:
-    print("KeyboardInterrupt:", e)
+# try:
+#     while True:
+#         getSensorData()
+# except OSError as e:
+#     print("OSError:", e)
+# except KeyboardInterrupt as e:
+#     print("KeyboardInterrupt:", e)

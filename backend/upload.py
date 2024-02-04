@@ -58,12 +58,12 @@ def capture_image(device="USB Camera", output_file="picture.jpg"):
 
 
 #default is webcam
-capture_image()
 #capture_image(camType["phone"])
 delaySecs = 2
 
 try:
     while True:
+        capture_image()
         data = getSensorData()
         print(uploadData(data["h"], data["t"], data["w"], getHeight("picture.jpg")[0], "picture.jpg"))
         sleep(delaySecs)
