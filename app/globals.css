@@ -4,6 +4,17 @@ body {
   padding: 0;
   height: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+a:visited {
+  pointer-events: none;
+  cursor: default;
+}
+
+.remove-underline {
+  text-decoration: none;
+  color: white;
 }
 
 .navbar {
@@ -116,6 +127,8 @@ body {
 .button-36:hover {
   box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
   transition-duration: 0.1s;
+  display: inline-block;
+  text-decoration: none;
 }
 
 @media (min-width: 768px) {

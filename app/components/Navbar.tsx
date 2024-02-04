@@ -22,17 +22,17 @@ export default function Navbar() {
           <ul className="navbar-nav">
             <li className="nav-item active">
               <Link href="/current" className="nav-link ">
-                Home <span className="sr-only"></span>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link href="/home" className="nav-link">
                 Current <span className="sr-only"></span>
               </Link>
             </li>
             <li className="nav-item">
+              <Link href="/home" className="nav-link">
+                Home <span className="sr-only"></span>
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link href="/next" className="nav-link">
-                Insights <span className="sr-only"></span>
+                Next <span className="sr-only"></span>
               </Link>
             </li>
           </ul>
