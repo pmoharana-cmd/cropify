@@ -1,11 +1,12 @@
 import subprocess
+from time import sleep
 from pymongo import MongoClient, database
 import os
 from dotenv import load_dotenv
 import base64
-# from time import sleep
 from picture import getHeight
 from datetime import datetime
+from sensor import getSensorData
 
 load_dotenv("../.env")
 
@@ -61,3 +62,16 @@ capture_image()
 #capture_image(camType["phone"])
 print(uploadData(0, 0, 0, getHeight("picture.jpg")[0], "picture.jpg"))
 
+delaySecs = 2
+
+try:
+    while True:
+        data = getSensorData()
+        print(uploadData(data["h"], data["t"], data["w"], getHeight("picture.jpg")[0], "picture.jpg"))
+        sleep(delaySecs)
+except KeyboardInterrupt as e:
+    print("KeyboardInterrupt:", e)
+except OSError as e:
+    print("OSError:", e)
+except Exception as e:
+    print("Exception:", e)

@@ -14,4 +14,4 @@ def capture_image(device="USB Camera", output_file="picture.jpg"):
         print(f"imagesnap not found, please install it with 'brew install imagesnap': {e}")
 
 # Example usage
-capture_image("SwagG Camera")
+capture_image()
