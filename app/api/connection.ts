@@ -3,7 +3,15 @@ import mongoose, { Mongoose } from "mongoose";
 const username = process.env.MONGO_USERNAME;
 const password = process.env.MONGO_PASSWORD;
 let connection: Mongoose;
-let cropSchema: any | undefined;
+const cropSchema = new mongoose.Schema({
+  _id: mongoose.Types.ObjectId,
+  time: Date,
+  humidity: Number,
+  temperature: Number,
+  water_level: Number,
+  height: Number,
+  image: String,
+});
 let cropCollection: any | undefined;
 
 const getConnection = async () => {
@@ -18,12 +26,8 @@ const getConnection = async () => {
   return connection;
 };
 
-const setSchema = (schema: any) => {
-  cropSchema = schema;
-};
-
 const setCrops = (collection: any) => {
   cropCollection = collection;
 };
 
-export { cropSchema, cropCollection, getConnection, setCrops, setSchema };
+export { cropSchema, cropCollection, getConnection, setCrops };

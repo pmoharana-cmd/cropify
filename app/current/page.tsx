@@ -9,27 +9,13 @@ import {
   cropCollection,
   getConnection,
   setCrops,
-  setSchema,
 } from "../api/connection";
 
 export default async function Current() {
   const mongoose = await getConnection();
 
-  if (!mongoose.models.User) {
-    const schema = new mongoose.Schema({
-      _id: mongoose.Types.ObjectId,
-      time: Date,
-      humidity: Number,
-      temperature: Number,
-      water_level: Number,
-      height: Number,
-      image: String,
-    });
-    const collection = mongoose.model("crop_data", schema);
-
-    setSchema(schema);
-    setCrops(collection);
-  }
+  const cropCollection =
+    mongoose.models.crop_data || mongoose.model("crop_data", cropSchema);
 
   // @ts-ignore
   const results: CropData[] = await cropCollection
@@ -51,25 +37,31 @@ export default async function Current() {
   return (
     <>
       <Navbar />
-      <div className="container">
-        <div className="background">
-          <Image
-            src="/images/background2.png"
-            layout="fill"
-            objectFit="cover"
-            quality={100}
-            alt="Background"
-            priority
-          />
-        </div>
+      <div className="background">
+        <Image
+          src="/images/background2.png"
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+          alt="Background"
+          priority
+        />
         <div className="content">
-          <div className="slogan-container">
-            <h1 className="title fadeIn">You Plant, We Plan</h1>
-            <button className="button-36" role="button">
-              Get Started
-            </button>
-          </div>
+          <h1 className="title fadeIn">You Plant, We Plan</h1>
+          <button className="button-36" role="button">
+            Get Started
+          </button>
         </div>
+      </div>
+      <div className="background background2">
+        <Image
+          src="/images/green.png"
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+          alt="Green Background"
+          priority
+        />
       </div>
       <Footer />
     </>
