@@ -1,29 +1,39 @@
-import Link from "next/link";
-import { getConnection } from "../api/connection";
 import { CropData } from "../models/crop";
 import fs from "fs";
 import Navbar from "../components/Navbar";
 import Image from "next/image";
 import "../globals.css";
 import Footer from "../components/Footer";
+import {
+  cropSchema,
+  cropCollection,
+  getConnection,
+  setCrops,
+  setSchema,
+} from "../api/connection";
 
 export default async function Current() {
   const mongoose = await getConnection();
 
-  const cropSchema = new mongoose.Schema({
-    _id: mongoose.Types.ObjectId,
-    time: Date,
-    humidity: Number,
-    temperature: Number,
-    water_level: Number,
-    height: Number,
-    image: String,
-  });
+  if (!cropSchema || !cropCollection) {
+    const schema = new mongoose.Schema({
+      _id: mongoose.Types.ObjectId,
+      time: Date,
+      humidity: Number,
+      temperature: Number,
+      water_level: Number,
+      height: Number,
+      image: String,
+    });
+    const collection = mongoose.model("crop_data", cropSchema);
 
-  const Crops = mongoose.model("crop_data", cropSchema);
+    setSchema(schema);
+    setCrops(collection);
+  }
 
   // @ts-ignore
-  const results: CropData[] = await Crops.find({})
+  const results: CropData[] = await cropCollection
+    .find({})
     .sort({ time: -1 })
     .limit(100);
 
