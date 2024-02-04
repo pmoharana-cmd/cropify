@@ -1,22 +1,24 @@
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import LineGraph from "../components/Line";
+import Image from "next/image";
+import Footer from "../components/Footer";
 
 export default function Current() {
   return (
-    <div>
-      <main>
-        <Navbar />
-      </main>
-      <div>
-        <h1>Maybe authentication if we have time</h1>
-        <h1>Put Current page information here</h1>
-        <p>Put goals and slogan and stuff</p>
-        {/* <LineGraph /> */}
-        <button>
-          <Link href="/">Back</Link>
-        </button>
+    <main>
+      <Navbar />
+      <div className="background">
+        <Image
+          src="/images/background2.png"
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+          alt="Background"
+          priority
+        />
       </div>
-    </div>
+      <Footer />
+    </main>
   );
 }

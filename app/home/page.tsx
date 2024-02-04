@@ -36,7 +36,7 @@ export default async function Home() {
   // );
 
   return (
-    <>
+    <main>
       <Navbar />
       <div className="background">
         <Image
@@ -76,7 +76,7 @@ export default async function Home() {
         </div>
       </div>
       <Footer />
-    </>
+    </main>
   );
 }
 {
