@@ -290,3 +290,31 @@ a:visited {
   -webkit-user-select: none;
   touch-action: manipulation;
 }
+
+.centered-textbox {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 1000px;
+  height: 600px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.button-container {
+  text-align: center;
+  display: flex;
+  gap: 10px;
+  margin-top: auto; /* Push buttons to the bottom */
+  padding-bottom: 20px; /* Add some space at the bottom */
+}
