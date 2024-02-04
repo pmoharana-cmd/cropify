@@ -25,9 +25,9 @@ def uploadData(humidity: float, temp: float, water_level: float, height: float, 
         "image": convertImageToArray(imagePath)
     }
 
-    db = client.main
+    db = client.test
 
-    crop_data = db.get_collection("cropData")
+    crop_data = db.get_collection("crop_datas")
 
     data_id = crop_data.insert_one(row)
 
@@ -40,4 +40,4 @@ def convertImageToArray(img: str):
         return coded_string
     
 for i in range(20):
-    uploadData(0, 0, 0, 0, "picture.jpg")
+    uploadData(0, 0, 0, 0, "ruler.jpg")
