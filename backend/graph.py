@@ -60,13 +60,20 @@ ax3.set_ylabel('Water Level (cm)', color=color)
 ax3.plot(df['time'], df['water_level'], color=color, label='Water Level')
 ax3.tick_params(axis='y', labelcolor=color)
 
+# Assuming 'height' is a field in your data representing plant height, for example
+ax4 = ax1.twinx()
+ax4.spines["right"].set_position(("axes", 1.4))  # Offset the fourth axis
+ax4.set_ylabel('Height (cm)', color='tab:purple')  # Choose a color that is distinct
+ax4.plot(df['time'], df['height'], color='tab:purple', label='Height')
+ax4.tick_params(axis='y', labelcolor='tab:purple')
+
 # Format the x-axis to show date properly
 ax1.xaxis.set_major_locator(mdates.DayLocator())
 ax1.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
 plt.xticks(rotation=45)
 
 # Adding linear regression lines
-for column in ['temperature', 'humidity', 'water_level']:
+for column in ['temperature', 'humidity', 'water_level', 'height']:
     X = mdates.date2num(df['time']).reshape(-1, 1)  # Convert dates to ordinal numbers
     y = df[column].values.reshape(-1, 1)
     model = LinearRegression().fit(X, y)
