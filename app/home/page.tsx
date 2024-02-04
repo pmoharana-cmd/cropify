@@ -68,9 +68,40 @@ export default async function Home() {
         />
         <div className="content">
           <h1 className="title fadeIn">Choose what you want to plant</h1>
-          <button className="button-36">
-            <a href="#second-section" className="remove-underline">
-              Get Started
+          <button className="button-37">
+            <a
+              href="#second-section"
+              className="remove-underline"
+              role="button"
+            >
+              Leaf
+            </a>
+          </button>{" "}
+          <button className="button-38">
+            <a
+              href="#second-section"
+              className="remove-underline"
+              role="button"
+            >
+              Legume
+            </a>
+          </button>{" "}
+          <button className="button-39">
+            <a
+              href="#second-section"
+              className="remove-underline"
+              role="button"
+            >
+              Fruits
+            </a>
+          </button>{" "}
+          <button className="button-40">
+            <a
+              href="#second-section"
+              className="remove-underline"
+              role="button"
+            >
+              Root
             </a>
           </button>{" "}
         </div>
