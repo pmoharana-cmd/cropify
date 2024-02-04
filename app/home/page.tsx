@@ -106,6 +106,7 @@ export default async function Home() {
           </button>{" "}
         </div>
       </div>
+
       <Footer />
     </main>
   );

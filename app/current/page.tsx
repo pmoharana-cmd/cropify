@@ -8,6 +8,7 @@ export default function Current() {
   return (
     <main>
       <Navbar />
+
       <div className="background">
         <Image
           src="/images/background2.png"
