@@ -1,39 +1,15 @@
-import { CropData } from "../models/crop";
-import fs from "fs";
+"use client";
+
 import Navbar from "../components/Navbar";
 import Image from "next/image";
 import "../globals.css";
 import Footer from "../components/Footer";
+import { useContext } from "react";
+import { rotationContext } from "../api/rotationContext";
 import Link from "next/link";
-import {
-  cropSchema,
-  cropCollection,
-  getConnection,
-  setCrops,
-} from "../api/connection";
 
-export default async function Home() {
-  // const mongoose = await getConnection();
-
-  // const cropCollection =
-  //   mongoose.models.crop_data || mongoose.model("crop_data", cropSchema);
-
-  // // @ts-ignore
-  // const results: CropData[] = await cropCollection
-  //   .find({})
-  //   .sort({ time: -1 })
-  //   .limit(1);
-
-  // console.log(results[0].image);
-
-  // fs.writeFile(
-  //   "./public/currPlant.png",
-  //   results[0].image,
-  //   { encoding: "base64" },
-  //   function (err) {
-  //     console.log("File created");
-  //   }
-  // );
+export default function Home() {
+  const { currRotation, setRotation } = useContext(rotationContext);
 
   return (
     <main>
@@ -68,41 +44,25 @@ export default async function Home() {
         />
         <div className="content">
           <h1 className="title fadeIn">Choose what you want to plant</h1>
-          <button className="button-37">
-            <a
-              href="#second-section"
-              className="remove-underline"
-              role="button"
-            >
-              Leaf
-            </a>
-          </button>{" "}
-          <button className="button-38">
-            <a
-              href="#second-section"
-              className="remove-underline"
-              role="button"
-            >
+          <button className="button-37" onClick={() => setRotation(0)}>
+            <Link href="/current" className="remove-underline" role="button">
               Legume
-            </a>
+            </Link>
           </button>{" "}
-          <button className="button-39">
-            <a
-              href="#second-section"
-              className="remove-underline"
-              role="button"
-            >
-              Fruits
-            </a>
+          <button className="button-38" onClick={() => setRotation(1)}>
+            <Link href="/current" className="remove-underline" role="button">
+              Greens
+            </Link>
           </button>{" "}
-          <button className="button-40">
-            <a
-              href="#second-section"
-              className="remove-underline"
-              role="button"
-            >
-              Root
-            </a>
+          <button className="button-39" onClick={() => setRotation(2)}>
+            <Link href="/current" className="remove-underline" role="button">
+              Fruiting Vegetables
+            </Link>
+          </button>{" "}
+          <button className="button-40" onClick={() => setRotation(3)}>
+            <Link href="/current" className="remove-underline" role="button">
+              Root Vegetables
+            </Link>
           </button>{" "}
         </div>
       </div>

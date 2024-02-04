@@ -1,39 +1,13 @@
-import { CropData } from "./models/crop";
-import fs from "fs";
+"use client";
+
 import Navbar from "./components/Navbar";
 import Image from "next/image";
 import "./globals.css";
 import Footer from "./components/Footer";
-import Link from "next/link";
-import {
-  cropSchema,
-  cropCollection,
-  getConnection,
-  setCrops,
-} from "./api/connection";
+import { redirect } from "next/navigation";
 
-export default async function Home() {
-  // const mongoose = await getConnection();
-
-  // const cropCollection =
-  //   mongoose.models.crop_data || mongoose.model("crop_data", cropSchema);
-
-  // // @ts-ignore
-  // const results: CropData[] = await cropCollection
-  //   .find({})
-  //   .sort({ time: -1 })
-  //   .limit(1);
-
-  // console.log(results[0].image);
-
-  // fs.writeFile(
-  //   "./public/currPlant.png",
-  //   results[0].image,
-  //   { encoding: "base64" },
-  //   function (err) {
-  //     console.log("File created");
-  //   }
-  // );
+export default function Home() {
+  redirect("/home");
 
   return (
     <main>
@@ -109,6 +83,4 @@ export default async function Home() {
       <Footer />
     </main>
   );
-}
-{
 }

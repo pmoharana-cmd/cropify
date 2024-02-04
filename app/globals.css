@@ -6,6 +6,21 @@ body {
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
+
+.white {
+  color: white;
+}
+
+.spacing {
+  margin: 0 20px;
+  color: rgb(18, 18, 18);
+}
+
+.bulleted-list {
+  list-style-type: disc;
+  margin-left: 20px; /* Adjust the margin as needed */
+}
+
 .button {
   border-radius: 8px;
   border-style: none;
