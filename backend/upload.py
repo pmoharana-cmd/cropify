@@ -3,7 +3,7 @@ from pymongo import MongoClient, database
 import os
 from dotenv import load_dotenv
 import base64
-from time import sleep
+# from time import sleep
 from picture import getHeight
 from datetime import datetime
 
