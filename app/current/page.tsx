@@ -24,7 +24,18 @@ export default function Current() {
           priority
         />
       </div>
-      <Footer />
+      <div className="centered-textbox">
+        <h1>HEADER FOR DA ROTATION</h1>
+        <p>Placeholder for Rotation</p>
+        <div className="button-container">
+          <button className="button-36">
+            <a className="remove-underline">More insights</a>
+          </button>{" "}
+          <button className="button-36">
+            <a className="remove-underline">Next rotation</a>
+          </button>{" "}
+        </div>
+      </div>
     </main>
   );
 }
