@@ -1,6 +1,6 @@
 import cv2
 
-def detect_height_optimized(image_path):
+def getHeight(image_path):
     # Load the image
     image = cv2.imread(image_path)
     print(image.shape)
@@ -39,10 +39,10 @@ def detect_height_optimized(image_path):
     # return (original_height, image.shape[0])
 
 # Example usage
-image_path = "wheat.jpg"
-height, imgHeight = detect_height_optimized(image_path)
-# print(f"Object Height: {height} pixels") # <-- Exact height isn't super accurate so don't display. 
-print("Out of total pixels: ", round(height/imgHeight,2)*100, "%")
-print("DONE")
+# image_path = "wheat.jpg"
+# height, imgHeight = getHeight(image_path)
+# # print(f"Object Height: {height} pixels") # <-- Exact height isn't super accurate so don't display. 
+# print("Out of total pixels: ", round(height/imgHeight,2)*100, "%")
+# print("DONE")
 
 #TEST4 not passed: perhaps because of shadows. 

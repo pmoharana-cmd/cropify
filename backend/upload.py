@@ -1,14 +1,18 @@
-from pymongo import MongoClient
+import subprocess
+from time import sleep
+from pymongo import MongoClient, database
 import os
 from dotenv import load_dotenv
 import base64
+from picture import getHeight
 from datetime import datetime
+from sensor import getSensorData
 
 load_dotenv("../.env")
 
 USERNAME = os.getenv("MONGO_USERNAME")
 PASSWORD = os.getenv("MONGO_PASSWORD")
-
+camType = {"phone": "SwagG Camera", "webcam": "USB Camera"}
 
 client = MongoClient("mongodb+srv://%s:%s@cropdata.mdv0mdr.mongodb.net/?retryWrites=true&w=majority" % (USERNAME, PASSWORD))
 
@@ -39,5 +43,31 @@ def convertImageToArray(img: str):
         coded_string = base64.b64encode(image.read())
         return coded_string
     
-for i in range(20):
-    uploadData(0, 0, 0, 0, "ruler.jpg")
+def capture_image(device="USB Camera", output_file="picture.jpg"):
+    command = ["imagesnap"]
+    if device:
+        command += ["-d", device]
+    command += [output_file]
+    try:
+        subprocess.run(command, check=True)
+        print(f"Image captured and saved as {output_file}")
+    except subprocess.CalledProcessError as e:
+        print(f"An error occurred while capturing the image: {e}")
+    except FileNotFoundError as e:
+        print(f"imagesnap not found, please install it with 'brew install imagesnap': {e}")
+
+
+#default is webcam
+#capture_image(camType["phone"])
+delaySecs = 2
+
+try:
+    while True:
+        capture_image()
+        data = getSensorData()
+        print(uploadData(data["h"], data["t"], data["w"], getHeight("picture.jpg")[0], "picture.jpg"))
+        sleep(delaySecs)
+except KeyboardInterrupt as e:
+    print("KeyboardInterrupt:", e)
+except OSError as e:
+    print("OSError:", e)
