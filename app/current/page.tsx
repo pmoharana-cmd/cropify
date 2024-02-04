@@ -15,7 +15,7 @@ import {
 export default async function Current() {
   const mongoose = await getConnection();
 
-  if (!cropSchema || !cropCollection) {
+  if (!mongoose.models.User) {
     const schema = new mongoose.Schema({
       _id: mongoose.Types.ObjectId,
       time: Date,
@@ -69,16 +69,6 @@ export default async function Current() {
               Get Started
             </button>
           </div>
-        </div>
-        <div className="background">
-          <Image
-            src="/images/green.png"
-            layout="fill"
-            objectFit="cover"
-            quality={100}
-            alt="Background"
-            priority
-          />
         </div>
       </div>
       <Footer />
